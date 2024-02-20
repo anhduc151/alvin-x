@@ -1,0 +1,58 @@
+/* css post_crypto */
+.post_crypto {
+  display: grid;
+  padding: 130px 6% 0;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  min-height: 100vh;
+}
+
+.ant-skeleton-title,
+.ant-skeleton-avatar,
+.ant-skeleton-paragraph li {
+  background-color: #5c5858 !important;
+}
+
+.ant-skeleton-image {
+  background-color: #5c5858 !important;
+}
+
+.avatar-paragraph-container {
+  display: flex;
+  align-items: flex-start; /* Đặt ảnh avatar ở trên cùng */
+}
+
+.blog_box_head_imgs_avatar {
+  margin-right: 10px; /* Khoảng cách giữa avatar và đoạn văn bản */
+}
+
+.posts_description {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ant-progress-text {
+  color: #fff !important;
+}
+
+.posts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  /* min-height: 100vh; */
+}
+
+/* css details_posts */
+.details_posts {
+  padding: 100px 10%;
+}
+
+@media screen and (max-width: 768px) {
+  .post_crypto {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

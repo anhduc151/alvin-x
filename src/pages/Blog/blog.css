@@ -1,0 +1,148 @@
+/* css blog */
+.blog {
+  display: grid;
+  padding: 100px 5% 26px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  /* min-height: 100vh; */
+}
+
+.blog_box_head {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+
+.blog_box_head_imgs {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blog_box {
+  border: 1px solid #222020;
+  border-radius: 20px;
+  text-decoration: none;
+  overflow: hidden;
+}
+
+.blog_box_foot {
+  padding: 20px;
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  height: 100%;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.blog_box_foot_p {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.blog_box_foot_h2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.blog_box_foot_btn {
+  border: 2px solid #363434;
+  width: 150px;
+  padding: 10px;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  background-color: transparent;
+  margin-top: 10px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+}
+
+.blog_box_foot_btn:hover {
+  cursor: pointer;
+  background-color: #1f1d1d;
+}
+
+.icons_read {
+  color: rgb(12, 243, 205);
+}
+
+.blogs_panigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+/* css blog_detail */
+.blog_detail {
+  display: flex;
+  padding: 100px 15%;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+}
+
+.blog_detail_box {
+  display: flex;
+  /* padding: 0 15%; */
+  width: 100%;
+  gap: 20px;
+  flex-direction: column;
+}
+
+/* css bloglanding */
+.bloglanding {
+  padding: 60px 0 0;
+}
+
+@media screen and (max-width: 768px) {
+  .blog {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  strong img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .blog_detail_box_p p {
+    font-size: 12px;
+    width: 100%;
+  }
+
+  .blog_detail_box_p h2 {
+    font-size: 12px;
+    width: 100%;
+  }
+
+  strong em {
+    width: 300px;
+    font-size: 12px;
+  }
+
+  p img {
+    width: 200px;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .blog_detail_box {
+    padding: 0;
+  }
+
+  .blog_detail {
+    padding: 60px 5%;
+  }
+}

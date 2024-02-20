@@ -1,0 +1,54 @@
+/* css foot */
+.foot {
+  padding: 0 10%;
+}
+.foot_rule {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 10%;
+  border-top: 1px solid #4e4e4e;
+}
+
+.foot_right {
+  display: flex;
+  gap: 50px;
+}
+
+.footlanding_logo {
+  display: flex;
+}
+
+.foot_right_box1 {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}
+
+.foot_right_box1_p {
+  color: #4e4e4e;
+}
+
+.foot_right_box1_p:hover {
+  cursor: pointer;
+  color: #fff;
+}
+
+tr {
+  border-bottom: none !important;
+}
+
+@media screen and (max-width: 768px) {
+  .foot_rule {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footlanding_logo {
+    margin-bottom: 20px;
+  }
+
+  .foot_right {
+    display: flex;
+    flex-direction: column;
+  }
+}

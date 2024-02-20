@@ -1,42 +1,84 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+body {
+  background-color: var(--body_background);
+  color: var(--body_color);
+  font-family: "Roboto";
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+:root {
+  --body_background_dark: rgb(17, 17, 17);
+  --body_color_dark: white;
+  --link_color_dark: cyan;
+  --body_shadow_dark: 0px 20px 32px -8px rgba(255, 255, 255, 0.821);
+  --background_gradient_dark: linear-gradient(45deg, #000000, #434747);
+  --box_border_dark: 1px solid #545252;
+  --placeholder_color_dark: #a69f9f;
+  --antd_table_dark: rgb(17, 17, 17);
+  --antd_table_color_dark: #ffffff;
+  --antd_panigation_color_dark: #ffffff;
+  --antd_panigation_bgcolor_dark: rgb(49, 50, 53);
+  --box_signin_dark: #000;
+
+  --body_background_light: white;
+  --body_color_light: #000000;
+  --link_color_light: navy;
+  --body_shadow_light: 0px 20px 32px -8px rgba(0, 0, 0, 0.2);
+  --background_gradient_light: linear-gradient(to right, #71afe5, #e9dede);
+  --box_border_light: 1px solid #b6acac;
+  --placeholder_color_light: #1a1818;
+  --antd_table_light: #ffffff;
+  --antd_table_color_light: #000;
+  --antd_panigation_color_light: #000;
+  --antd_panigation_bgcolor_light: rgb(165, 166, 172);
+  --box_signin_light: #fff;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+[data-theme="dark"] {
+  --body_background: var(--body_background_dark);
+  --body_color: var(--body_color_dark);
+  --link_color: var(--link_color_dark);
+  --button_shadow: var(--body_shadow_dark);
+  --background_signin: var(--background_gradient_dark);
+  --box_border: var(--box_border_dark);
+  --placeholder_color: var(--placeholder_color_dark);
+  --antd_table: var(--antd_table_dark);
+  --antd_table_color: var(--antd_table_color_dark);
+  --antd_panigation: var(--antd_panigation_dark);
+  --antd_panigation_bgcolor: var(--antd_panigation_bgcolor_dark);
+  --box_signin: var(--box_signin_dark);
 }
 
-.card {
-  padding: 2em;
+[data-theme="light"] {
+  --body_background: var(--body_background_light);
+  --body_color: var(--body_color_light);
+  --link_color: var(--link_color_light);
+  --button_shadow: var(--body_shadow_light);
+  --background_signin: var(--background_gradient_light);
+  --box_border: var(--box_border_light);
+  --placeholder_color: var(--placeholder_color_light);
+  --antd_table: var(--antd_table_light);
+  --antd_table_color: var(--antd_table_color_light);
+  --antd_panigation: var(--antd_panigation_light);
+  --antd_panigation_bgcolor: var(--antd_panigation_bgcolor_light);
+  --box_signin: var(--box_signin_light);
 }
 
-.read-the-docs {
-  color: #888;
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  /* background-image: linear-gradient(0deg,#ff0076,#590fb7); */
+  background-color: #8b8a8d;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
 }

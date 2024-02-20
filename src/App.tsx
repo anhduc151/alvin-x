@@ -1,35 +1,69 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { Fragment, useEffect, useState } from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { RoutesApp } from "./router";
+// import DarkMode from "./components/DarkMode";
+import "./App.css";
+import DefaultLayout from "./Layout/DefaultLayout";
+import DarkMode from "./components/DarkMode";
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+interface DefaultLayoutProps {
+  children: React.ReactNode;
 }
 
-export default App
+
+function App(): JSX.Element {
+  // const [token, setToken] = useState<boolean | string>(false);
+
+  // // default dark mode
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    if (!savedTheme) {
+      localStorage.setItem("theme", "dark");
+    }
+  }, []);
+
+  // if (token) {
+  //   sessionStorage.setItem("token", JSON.stringify(token));
+  // }
+
+  // useEffect(() => {
+  //   if (sessionStorage.getItem("token")) {
+  //     let data = JSON.parse(sessionStorage.getItem("token")!);
+  //     setToken(data);
+  //   }
+  // }, []);
+
+  return (
+    <Router>
+      <div>
+        <DarkMode />
+        <Routes>
+          {RoutesApp.map((route, index) => {
+            const Page = route.component;
+            let Layout: React.ComponentType<DefaultLayoutProps> = DefaultLayout;
+            if (route.layout) {
+              Layout = route.layout;
+            } else if (route.layout === null) {
+              Layout = Fragment;
+            }
+            return (
+              <Route
+                key={index}
+                path={route.path}
+                element={
+                  <Layout>
+                    <Page />
+                  </Layout>
+                }
+              />
+            );
+          })}
+          {/* handle 404 pages */}
+          <Route path="*" element={<Navigate to="/404" />} />
+        </Routes>
+      </div>
+    </Router>
+  );
+}
+
+export default App;

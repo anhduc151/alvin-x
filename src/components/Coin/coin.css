@@ -1,0 +1,144 @@
+.row {
+  display: flex;
+  flex-direction: row;
+  /* width: 250px; */
+  padding: 10px 0;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.coin_box {
+  display: flex;
+  align-items: center;
+  padding-right: 3rem;
+}
+
+.coinbox_h1 {
+  font-size: 16px;
+  width: 160px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.coin_box_imgs {
+  height: 30px;
+  width: 30px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.symbol {
+  text-transform: uppercase;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+/* antd css */
+.ant-table-cell {
+  text-align: center !important;
+  background-color: var(--antd_table) !important;
+  color: var(--antd_table_color) !important;
+}
+
+.ant-table-tbody > tr > td {
+  background-color: var(--antd_table);
+  color: var(--antd_table_color) !important;
+}
+
+.ant-empty-description {
+  color: var(--antd_table_color) !important;
+}
+
+.ant-table-expanded-row-fixed {
+  border-bottom: none !important;
+}
+
+/* search */
+/* .ant-input,
+.ant-btn-default {
+  background-color: transparent !important;
+  color: var(--antd_table_color);
+} */
+
+/* search icon */
+/* .ant-btn-icon {
+  color: var(--body_color) !important;
+} */
+
+.ant-pagination-item a {
+  color: rgb(165, 166, 172) !important;
+}
+
+.ant-pagination-item-ellipsis {
+  color: rgb(59, 60, 63) !important;
+}
+
+.anticon-right,
+.anticon-left {
+  color: rgb(59, 60, 63) !important;
+}
+
+/* muốn sửa color active ở panigation thì sửa ở đây */
+.ant-pagination-item-active.a {
+  border: none !important;
+  background-color: var(--antd_panigation_bgcolor) !important;
+}
+
+.ant-select-selector {
+  background-color: var(--antd_panigation_bgcolor) !important;
+  border: none !important;
+}
+
+.ant-table-tbody > tr > td {
+  border: none !important;
+}
+
+.ant-table-thead > tr > td {
+  border: none !important;
+}
+
+.ant-table-container table > thead > tr:first-child > *:first-child {
+  border-start-start-radius: 0px !important;
+}
+
+.ant-table-wrapper
+  .ant-table-container
+  table
+  > thead
+  > tr:first-child
+  > *:last-child {
+  border-start-end-radius: 0px !important;
+}
+
+.ant-table-wrapper .ant-table-thead > tr > th {
+  border-bottom: 1px solid #4e4e4e !important;
+}
+
+.ant-table-wrapper
+  .ant-table-thead
+  > tr
+  > th:not(:last-child):not(.ant-table-selection-column):not(
+    .ant-table-row-expand-icon-cell
+  ):not([colspan])::before,
+:where(.css-dev-only-do-not-override-1qhpsh8).ant-table-wrapper
+  .ant-table-thead
+  > tr
+  > td:not(:last-child):not(.ant-table-selection-column):not(
+    .ant-table-row-expand-icon-cell
+  ):not([colspan])::before {
+  position: static;
+}
+
+@media screen and (max-width: 768px) {
+  .coinbox_h1 {
+    width: 140px;
+    display: flex;
+    align-items: flex-start;
+  }
+}

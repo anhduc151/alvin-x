@@ -1,0 +1,113 @@
+/* css navlanding */
+.navlanding {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px;
+  background-color: #000;
+  margin: 20px 20px 0 20px;
+  width: 98%;
+  border: 1px solid #3d3b3b;
+  border-radius: 20px;
+  position: fixed;
+  z-index: 999;
+}
+
+.navlanding_imgs {
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.navlanding_title {
+  font-size: 20px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.navlanding_logo {
+  display: flex;
+  align-items: center;
+}
+
+.navlanding_li {
+  list-style: none;
+  color: #747171;
+}
+
+.navlanding_ul {
+  display: flex;
+  gap: 20px;
+}
+
+.navlanding_apps_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  padding: 6px 20px;
+  background-color: rgba(48, 139, 71, 0.699);
+  color: rgb(21, 189, 111);
+  border: 1px solid rgba(7, 172, 48, 0.699);
+}
+
+.arr_icons {
+  font-size: 18px;
+}
+
+.navlanding_apps_btn:hover {
+  cursor: pointer;
+  background-color: rgba(33, 185, 71, 0.699);
+}
+
+.ant-message-notice-wrapper {
+  z-index: 999999 !important;
+}
+
+.navlanding_icon {
+  display: none;
+}
+
+.landingactive {
+  color: rgb(21, 189, 111);
+}
+
+@media screen and (max-width: 768px) {
+  .navlanding_ul {
+    display: none;
+  }
+
+  .navlanding_open {
+    display: flex;
+    padding: 5%;
+    width: 75%;
+    height: 100vh;
+    background-color: #000000c2;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    font-weight: bold;
+    right: 0;
+    border-bottom: 1px solid #fff;
+    z-index: 100;
+  }
+
+  .navlanding_icon {
+    display: block;
+  }
+
+  .navlanding {
+    margin: 0;
+    width: 100%;
+    border-radius: 0px;
+    background-color: transparent;
+    border: none;
+    position: fixed;
+  }
+
+  .navlanding_logo {
+    display: none;
+  }
+}

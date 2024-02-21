@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "../../../client";
 import Sidebar from "../../components/Sidebar";
+import { Skeleton } from "antd";
 
 interface Topic {
   id: number;
@@ -13,10 +14,12 @@ const CreateTopics: React.FC = () => {
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [editId, setEditId] = useState<number | null>(null);
   const [searchTerm, setSearchTerm] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(true);
 
   // Fetch data
   async function fetchTopics() {
     try {
+      setLoading(true);
       const { data, error } = await supabase
         .from("topics")
         .select()
@@ -26,8 +29,10 @@ const CreateTopics: React.FC = () => {
       } else {
         setTopics(data || []);
       }
+      setLoading(false);
     } catch (error) {
       console.error("Error fetching topics:", (error as Error).message);
+      setLoading(false);
     }
   }
 
@@ -128,27 +133,36 @@ const CreateTopics: React.FC = () => {
             />
           </div>
 
-          <div className="create_topics_lists">
-            {topics.map((topic) => (
-              <div key={topic.id} className="create_topics_box">
-                <p className="create_topics_box_name">{topic.name}</p>
-                <div className="create_topics_btn">
-                  <button
-                    onClick={() => handleEdit(topic.id)}
-                    className="create_edit"
-                  >
-                    Edit
-                  </button>
-                  <button
-                    onClick={() => handleDelete(topic.id)}
-                    className="create_delete"
-                  >
-                    Delete
-                  </button>
+          {loading ? (
+            <Skeleton
+              // avatar={{ shape: "square", size: "large" }}
+              title={false}
+              paragraph={{ rows: 4, width: ["100%", "80%", "60%", "40%"] }}
+              active
+            />
+          ) : (
+            <div className="create_topics_lists">
+              {topics.map((topic) => (
+                <div key={topic.id} className="create_topics_box">
+                  <p className="create_topics_box_name">{topic.name}</p>
+                  <div className="create_topics_btn">
+                    <button
+                      onClick={() => handleEdit(topic.id)}
+                      className="create_edit"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      onClick={() => handleDelete(topic.id)}
+                      className="create_delete"
+                    >
+                      Delete
+                    </button>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </>
       </div>
     </>

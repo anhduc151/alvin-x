@@ -95,7 +95,7 @@ const NavLanDing: React.FC = () => {
               activePage === "/blogs" ? "landingactive" : ""
             }`}
           >
-            Blog
+            Blogs
           </li>
         </Link>
       </ul>

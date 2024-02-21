@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import { Skeleton, Pagination } from "antd";
 import Sidebar from "../../components/Sidebar";
 
-// Khai báo kiểu cho dữ liệu post
 interface Post {
   id: number | null;
   title: string;
@@ -15,12 +14,12 @@ interface Post {
 }
 
 const CreateBlog: React.FC = () => {
-  const [posts, setPosts] = useState<Post[]>([]); // Sử dụng kiểu Post[]
+  const [posts, setPosts] = useState<Post[]>([]);
   const [post, setPost] = useState<Post>({
     id: null,
     title: "",
     description: "",
-  }); // Sử dụng kiểu Post
+  });
   const { title, description } = post;
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [currentPage, setCurrentPage] = useState<number>(1);

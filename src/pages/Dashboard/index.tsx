@@ -63,6 +63,7 @@ const DashBoard: React.FC = () => {
 
   const handleChangeTable = (e: ChangeEvent<HTMLInputElement>) => {
     const searchText = e.target.value.toLowerCase();
+    setSearch(searchText);
     const filteredData = coins.filter((coin) =>
       coin.name.toLowerCase().includes(searchText)
     );

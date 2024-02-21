@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Input, Button, message } from "antd";
+import { Input, Button } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "../../../client";
 import logonav from "../../../assets/logo.png";
@@ -10,7 +10,7 @@ const SignInOTP: React.FC = () => {
 
   const sendOTP = async (emailForOTP: string) => {
     try {
-      const { data, error } = await supabase.auth.signInWithOtp({
+      const { error } = await supabase.auth.signInWithOtp({
         email: emailForOTP,
         // options: {
         //   redirectTo: `${window.location.origin}/verify-email/${emailForOTP}`,

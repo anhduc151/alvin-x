@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./navlanding.css";
 import logonav from "../../assets/logo.png";
 import { Link, useLocation } from "react-router-dom";
@@ -9,7 +9,7 @@ const NavLanDing: React.FC = () => {
   const [activePage, setActivePage] = useState("");
   const [isNavVisible, setIsNavVisible] = useState(true);
   const [previousScroll, setPreviousScroll] = useState(0);
-  const navRef = useRef<HTMLDivElement>(null);
+  // const navRef = useRef<HTMLDivElement>(null);
 
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen);

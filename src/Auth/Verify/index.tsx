@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { supabase } from "../../client";
-import { message } from "antd";
+// import { message } from "antd";
 
 const VerifyEmail: React.FC = () => {
-  const { email } = useParams<{ email: string }>();
+  // const { email } = useParams<{ email: string }>();
   const navigate = useNavigate();
   const location = useLocation();
 

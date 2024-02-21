@@ -1,9 +1,9 @@
 import React, { useEffect, useState, ChangeEvent } from "react";
-import { Input, Table, Spin, message, Skeleton } from "antd";
+import { Skeleton, Table } from "antd";
 import axios, { AxiosResponse } from "axios";
 import Coin from "../../components/Coin";
 import "./dashboard.css";
-import type { TableProps } from 'antd';
+import type { TableProps } from "antd";
 
 interface CoinData {
   id: string;
@@ -30,7 +30,9 @@ const DashBoard: React.FC = () => {
 
   useEffect(() => {
     axios
-      .get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=inr&order=market_cap_desc&per_page=100&page=1&sparkline=false")
+      .get(
+        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=inr&order=market_cap_desc&per_page=100&page=1&sparkline=false"
+      )
       .then((res: AxiosResponse<CoinData[]>) => {
         setCoins(res.data);
       })
@@ -40,20 +42,24 @@ const DashBoard: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const sortedCoins = [...coins].sort((a, b) => b.last_updated - a.last_updated);
+    const sortedCoins = [...coins].sort(
+      (a, b) => b.last_updated - a.last_updated
+    );
     const latestThreeCoins = sortedCoins.slice(0, 3);
     setLatestCoins(latestThreeCoins);
   }, [coins]);
 
   useEffect(() => {
-    const sortedCoins = [...coins].sort((a, b) => b.total_volume - a.total_volume);
+    const sortedCoins = [...coins].sort(
+      (a, b) => b.total_volume - a.total_volume
+    );
     const highVolumeThreeCoins = sortedCoins.slice(0, 3);
     setHighVolumeCoins(highVolumeThreeCoins);
   }, [coins]);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value);
-  };
+  // const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  //   setSearch(e.target.value);
+  // };
 
   const handleChangeTable = (e: ChangeEvent<HTMLInputElement>) => {
     const searchText = e.target.value.toLowerCase();
@@ -69,12 +75,14 @@ const DashBoard: React.FC = () => {
 
   const selectedCoins = filterCoins.slice(0, 3);
 
-  const columns: TableProps<CoinData>['columns'] = [
+  const columns: TableProps<CoinData>["columns"] = [
     {
       title: "Coin",
       dataIndex: "name",
       key: "name",
-      render: (text: string, record: CoinData) => <Coin name={text} image={record.image} symbol={record.symbol} />,
+      render: (text: string, record: CoinData) => (
+        <Coin name={text} image={record.image} symbol={record.symbol} />
+      ),
       fixed: "left",
       width: 50,
     },
@@ -168,7 +176,11 @@ const DashBoard: React.FC = () => {
               <>
                 {selectedCoins.map((coin) => (
                   <div key={coin.id} className="coin_info_box">
-                    <Coin name={coin.name} image={coin.image} symbol={coin.symbol} />
+                    <Coin
+                      name={coin.name}
+                      image={coin.image}
+                      symbol={coin.symbol}
+                    />
                     <p className={coin.price_change_24h < 0 ? "red" : "green"}>
                       {coin.current_price}
                     </p>
@@ -211,7 +223,11 @@ const DashBoard: React.FC = () => {
               <>
                 {latestCoins.map((coin) => (
                   <div key={coin.id} className="coin_info_box">
-                    <Coin name={coin.name} image={coin.image} symbol={coin.symbol} />
+                    <Coin
+                      name={coin.name}
+                      image={coin.image}
+                      symbol={coin.symbol}
+                    />
                     <p className={coin.price_change_24h < 0 ? "red" : "green"}>
                       {coin.current_price}
                     </p>
@@ -241,7 +257,11 @@ const DashBoard: React.FC = () => {
               <>
                 {highVolumeCoins.map((coin) => (
                   <div key={coin.id} className="coin_info_box">
-                    <Coin name={coin.name} image={coin.image} symbol={coin.symbol} />
+                    <Coin
+                      name={coin.name}
+                      image={coin.image}
+                      symbol={coin.symbol}
+                    />
                     <p className={coin.price_change_24h < 0 ? "red" : "green"}>
                       {coin.current_price}
                     </p>
@@ -307,8 +327,6 @@ const DashBoard: React.FC = () => {
             />
           </>
         )}
-
-        
       </div>
     </div>
   );

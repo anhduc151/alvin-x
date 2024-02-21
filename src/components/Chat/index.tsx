@@ -37,7 +37,7 @@ const Chat: React.FC = () => {
           <div className="chat-messages">
             <List
               dataSource={messages}
-              renderItem={(message: Message, index: number) => (
+              renderItem={(message: Message) => (
                 <List.Item style={{ textAlign: message.fromMe ? 'right' : 'left' }}>
                   {message.text}
                 </List.Item>

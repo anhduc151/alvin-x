@@ -130,19 +130,19 @@ const  SignIn: React.FC<SignInProps> = () => {
           </Link>
         </div>
 
-        <div className="sign_in_or">
+        {/* <div className="sign_in_or">
           <p className="or">OR</p>
-        </div>
+        </div> */}
 
         {/* <div className="sign_in_google" onClick={signInWithGoogle}>
           <img src={google} alt="" className="sign_in_google_imgs" />
           <p className="sign_in_google_p">Continue with Google</p>
         </div> */}
 
-        <div className="sign_in_otp">
+        {/* <div className="sign_in_otp">
           <p>If you want to login by OTP</p>
           <Link to="/sign-in-otp">Click Here</Link>
-        </div>
+        </div> */}
       </div>
 
       {/* <div className="cube-loader">

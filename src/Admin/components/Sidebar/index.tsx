@@ -5,30 +5,16 @@ import logonav from "../../../assets/logo.png";
 import { message } from "antd";
 
 const Sidebar: React.FC = () => {
-  const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
   const location = useLocation();
   const [activePage, setActivePage] = useState<string>("");
-  const [isNavVisible, setIsNavVisible] = useState<boolean>(true);
+  // const [isNavVisible, setIsNavVisible] = useState<boolean>(true);
   const [previousScroll, setPreviousScroll] = useState<number>(0);
   const navRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
 
-  const toggleNav = () => {
-    setIsNavOpen(!isNavOpen);
-  };
-
-  const handleScroll = () => {
-    const currentScrollPos: number = window.scrollY;
-    const isScrolledDown: boolean = currentScrollPos > previousScroll;
-
-    if (isScrolledDown && currentScrollPos > 200) {
-      setIsNavVisible(false);
-    } else {
-      setIsNavVisible(true);
-    }
-
-    setPreviousScroll(currentScrollPos);
-  };
+  // const toggleNav = () => {
+  //   setIsNavOpen(!isNavOpen);
+  // };
 
   const handleLogout = () => {
     navigate("/admin");
@@ -42,7 +28,7 @@ const Sidebar: React.FC = () => {
   useEffect(() => {
     const pathname: string = location.pathname;
     setActivePage(pathname);
-  }, [location, isNavVisible, previousScroll]);
+  }, [location, previousScroll]);
 
   return (
     <div className="sidebar" ref={navRef}>
@@ -53,7 +39,7 @@ const Sidebar: React.FC = () => {
         </Link>
       </div>
 
-      <ul className={`sidebar_ul ${isNavOpen ? "navlanding_open" : ""}`}>
+      <ul className="sidebar_ul">
         <Link to="/admin/dashboard" className="decoration">
           <li
             className={`sidebar_li ${

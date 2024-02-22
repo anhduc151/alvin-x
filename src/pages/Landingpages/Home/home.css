@@ -738,6 +738,35 @@
   object-fit: cover;
 }
 
+.iframe {
+  position: absolute;
+  right: 1%;
+  border-radius: 20px;
+  bottom: 10%;
+  position: fixed;
+  border: 1px solid #383838;
+  z-index: 1000;
+}
+
+.chat_boxs {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #1cda5c;
+  position: absolute;
+  right: 2%;
+  bottom: 2%;
+  position: fixed;
+  z-index: 9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chat_icons {
+  font-size: 32px;
+}
+
 @media screen and (max-width: 768px) {
   .home_logo_icons_imgs {
     display: none;

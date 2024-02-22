@@ -18,12 +18,44 @@ import { Link } from "react-router-dom";
 // import map from "../../../assets/map.png";
 
 const Home: React.FC = () => {
+  // useEffect(() => {
+  //   const script1 = document.createElement("script");
+  //   script1.src = "/src/main.tsx";
+  //   script1.type = "module";
+  //   document.body.appendChild(script1);
+
+  //   const script2 = document.createElement("script");
+  //   script2.src = "https://crypto-beat--alvin.modal.run/copilot/index.js";
+  //   document.body.appendChild(script2);
+
+  //   const script3 = document.createElement("script");
+  //   script3.innerHTML = `
+  //     window.mountChainlitWidget({
+  //       chainlitServer: "https:/crypto-beat--alvin.modal.run",
+  //     });
+  //   `;
+  //   document.body.appendChild(script3);
+
+  //   // Clean up
+  //   return () => {
+  //     document.body.removeChild(script1);
+  //     document.body.removeChild(script2);
+  //     document.body.removeChild(script3);
+  //   };
+  // }, []);
+
   useEffect(() => {
     document.title = " Alvin AI";
   }, []);
 
   return (
     <div className="home">
+      {/* <iframe
+        src="https://crypto-beat--alvin.modal.run/"
+        width={300}
+        height={500}
+        style={{ position: "absolute", bottom: "2%", right: "2%", }}
+      ></iframe> */}
       <NavLanDing />
       <div className="home_circle">
         <div className="home_title">

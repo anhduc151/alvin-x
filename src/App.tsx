@@ -1,7 +1,6 @@
 import React, { Fragment, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { RoutesApp } from "./router";
-// import DarkMode from "./components/DarkMode";
 import "./App.css";
 import DefaultLayout from "./Layout/DefaultLayout";
 import DarkMode from "./components/DarkMode";
@@ -12,7 +11,6 @@ interface DefaultLayoutProps {
 
 
 function App(): JSX.Element {
-  // const [token, setToken] = useState<boolean | string>(false);
 
   // // default dark mode
   useEffect(() => {
@@ -22,16 +20,6 @@ function App(): JSX.Element {
     }
   }, []);
 
-  // if (token) {
-  //   sessionStorage.setItem("token", JSON.stringify(token));
-  // }
-
-  // useEffect(() => {
-  //   if (sessionStorage.getItem("token")) {
-  //     let data = JSON.parse(sessionStorage.getItem("token")!);
-  //     setToken(data);
-  //   }
-  // }, []);
 
   return (
     <Router>

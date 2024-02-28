@@ -3,7 +3,7 @@ import { supabase } from "../../client";
 import { Link } from "react-router-dom";
 import { Pagination, Skeleton } from "antd";
 import "./topics.css";
-import Chat from "../../components/Chat";
+// import Chat from "../../components/Chat";
 import PostCrypto from "../Post";
 
 interface Topic {
@@ -28,7 +28,6 @@ const Topics: React.FC = () => {
         const { data, error } = await supabase
           .from("topics")
           .select("id, name, created_at");
-
         if (error) {
           throw error;
         }
@@ -53,7 +52,7 @@ const Topics: React.FC = () => {
 
   return (
     <>
-      <Chat />
+      {/* <Chat /> */}
       <div className="discover">
         <div className="discover_top">
           <h2 className="discover_top_h2">

@@ -155,7 +155,7 @@ const  SignIn: React.FC<SignInProps> = () => {
         </div>
       </div> */}
 
-      <div className="pyramid-loader">
+      {/* <div className="pyramid-loader">
         <div className="wrapper">
           <span className="side side1"></span>
           <span className="side side2"></span>
@@ -163,7 +163,7 @@ const  SignIn: React.FC<SignInProps> = () => {
           <span className="side side4"></span>
           <span className="shadow"></span>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

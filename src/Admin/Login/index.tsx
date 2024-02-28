@@ -32,12 +32,9 @@ const LoginAdmin: React.FC = () => {
   const onFinish = async (values: { email: string; password: string }) => {
     try {
       setLoading(true);
-  
+
       // Check if email and password match the admin credentials
-      if (
-        values.email === "admin@gmail.com" &&
-        values.password === "111111"
-      ) {
+      if (values.email === "admin@gmail.com" && values.password === "111111") {
         // If match, sign in
         navigate("/admin/dashboard");
         message.success("Login successful!");

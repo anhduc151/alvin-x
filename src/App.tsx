@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import { RoutesApp } from "./router";
 import "./App.css";
 import DefaultLayout from "./Layout/DefaultLayout";
-import DarkMode from "./components/DarkMode";
+// import DarkMode from "./components/DarkMode";
 
 interface DefaultLayoutProps {
   children: React.ReactNode;
@@ -24,7 +24,7 @@ function App(): JSX.Element {
   return (
     <Router>
       <div>
-        <DarkMode />
+        {/* <DarkMode /> */}
         <Routes>
           {RoutesApp.map((route, index) => {
             const Page = route.component;

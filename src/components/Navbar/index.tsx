@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "../../client";
 import { message } from "antd";
 import navdropdown from "../../assets/dropdown.png";
+import { Modal } from "antd";
+import DarkMode from "../DarkMode";
 
 const Navbar: React.FC = () => {
   const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
@@ -20,6 +22,20 @@ const Navbar: React.FC = () => {
   // const closeNav = () => {
   //   setIsNavOpen(false);
   // };
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
 
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen);
@@ -178,7 +194,7 @@ const Navbar: React.FC = () => {
               <p className="dropdown_list_p">
                 <i className="bx bxs-user icons_dropdown"></i> Profile
               </p>
-              <p className="dropdown_list_p">
+              <p className="dropdown_list_p" onClick={showModal}>
                 <i className="bx bx-cog icons_dropdown"></i> Setting
               </p>
               <p className="dropdown_list_p" onClick={handleLogout}>
@@ -188,6 +204,17 @@ const Navbar: React.FC = () => {
           )}
         </div>
       </ul>
+
+      <Modal
+        title="Settings"
+        open={isModalOpen}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
+        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 10}}>
+          Theme <DarkMode />
+        </div>
+      </Modal>
     </nav>
   );
 };

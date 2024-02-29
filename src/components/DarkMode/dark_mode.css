@@ -1,10 +1,11 @@
 /* css DarkMode */
 .dark_mode {
-  position: absolute;
+  /* position: absolute;
   position: fixed;
   bottom: 2%;
   left: 2%;
-  z-index: 9;
+  z-index: 9; */
+  width: 100%;
 }
 
 .dark_mode_label {

@@ -4,6 +4,7 @@ import { RoutesApp } from "./router";
 import "./App.css";
 import DefaultLayout from "./Layout/DefaultLayout";
 import DarkMode from "./components/DarkMode";
+import { Toaster } from "sonner";
 
 interface DefaultLayoutProps {
   children: React.ReactNode;
@@ -16,6 +17,7 @@ function App(): JSX.Element {
   return (
     <Router>
       <div>
+        <Toaster />
         <DarkMode />
         <Routes>
           {RoutesApp.map((route, index) => {

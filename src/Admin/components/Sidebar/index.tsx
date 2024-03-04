@@ -2,7 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import "./sidebar.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import logonav from "../../../assets/logo.png";
-import { message } from "antd";
+// import { message } from "antd";
+import { toast } from "sonner";
 
 const Sidebar: React.FC = () => {
   const location = useLocation();
@@ -18,7 +19,13 @@ const Sidebar: React.FC = () => {
 
   const handleLogout = () => {
     navigate("/admin");
-    message.success("Logout Successfully!");
+    toast.success("Logout Successfully!", {
+      style: {
+        backgroundColor: "green",
+        color: "white",
+      },
+      position: "top-right",
+    });
   };
 
   useEffect(() => {

@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./post.css";
 import { Pagination, Skeleton, Progress } from "antd";
 import { supabase } from "../../client";
+import DarkMode from "../../components/DarkMode";
 
 interface Post {
   id: number;
@@ -89,6 +90,7 @@ const PostCrypto: React.FC = () => {
 
   return (
     <>
+      <DarkMode layout={Fragment} />
       <div className="posts">
         {loading ? (
           <>

@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import "./blog.css";
 import blogImage from "../../assets/blog.png";
 import { supabase } from "../../client";
 import { Link } from "react-router-dom";
 import { Pagination, Skeleton } from "antd";
+import DarkMode from "../../components/DarkMode";
 
 interface BlogPost {
   id: number;
@@ -48,6 +49,7 @@ const Blog: React.FC = () => {
 
   return (
     <>
+    <DarkMode layout={Fragment} />
       <div className="blog">
         {loading ? (
           <>

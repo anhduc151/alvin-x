@@ -25,6 +25,7 @@ body {
   --antd_panigation_color_dark: #ffffff;
   --antd_panigation_bgcolor_dark: rgb(49, 50, 53);
   --box_signin_dark: #000;
+  --bgr_navbar_dark: #111111;
 
   --body_background_light: white;
   --body_color_light: #000000;
@@ -38,6 +39,7 @@ body {
   --antd_panigation_color_light: #000;
   --antd_panigation_bgcolor_light: rgb(165, 166, 172);
   --box_signin_light: #fff;
+  --bgr_navbar_light: #fff;
 }
 
 [data-theme="dark"] {
@@ -53,6 +55,7 @@ body {
   --antd_panigation: var(--antd_panigation_dark);
   --antd_panigation_bgcolor: var(--antd_panigation_bgcolor_dark);
   --box_signin: var(--box_signin_dark);
+  --bgr_navbar: var(--bgr_navbar_dark);
 }
 
 [data-theme="light"] {
@@ -68,6 +71,7 @@ body {
   --antd_panigation: var(--antd_panigation_light);
   --antd_panigation_bgcolor: var(--antd_panigation_bgcolor_light);
   --box_signin: var(--box_signin_light);
+  --bgr_navbar: var(--bgr_navbar_light);
 }
 
 ::-webkit-scrollbar {

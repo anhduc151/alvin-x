@@ -1,11 +1,10 @@
 /* css DarkMode */
 .dark_mode {
-  /* position: absolute;
+  position: absolute;
   position: fixed;
   bottom: 2%;
-  left: 2%;
-  z-index: 9; */
-  width: 100%;
+  left: 1%;
+  z-index: 9;
 }
 
 .dark_mode_label {
@@ -71,3 +70,53 @@
 .dark_mode_input:checked + .dark_mode_label svg.moon {
   fill: #fff;
 }
+
+/* .container {
+  --color: #a5a5b0;
+  --size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: var(--size);
+  user-select: none;
+  fill: var(--color);
+}
+
+.container .moon {
+  position: absolute;
+  animation: keyframes-fill .5s;
+}
+
+.container .sun {
+  position: absolute;
+  display: none;
+  animation: keyframes-fill .5s;
+}
+
+.container input:checked ~ .moon {
+  display: none;
+}
+
+.container input:checked ~ .sun {
+  display: block;
+}
+
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+@keyframes keyframes-fill {
+  0% {
+    transform: rotate(-360deg) scale(0);
+    opacity: 0;
+  }
+
+  75% {
+    transform: rotate(25deg);
+  }
+} */

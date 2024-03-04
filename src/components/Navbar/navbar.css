@@ -7,7 +7,7 @@
   /* border-bottom: var(--box_border); */
   padding: 0 5%;
   /* justify-content: space-between; */
-  background-color: #111111;
+  background-color: var(--bgr_navbar);
   color: white;
   align-items: center;
   z-index: 998;

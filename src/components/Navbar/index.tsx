@@ -2,13 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./navbar.css";
 import logo1 from "../../assets/logo.png";
-// import DarkMode from "../DarkMode";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../../client";
 import { message } from "antd";
 import navdropdown from "../../assets/dropdown.png";
-import { Modal } from "antd";
-import DarkMode from "../DarkMode";
 
 const Navbar: React.FC = () => {
   const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
@@ -17,25 +14,6 @@ const Navbar: React.FC = () => {
   const [isNavVisible, setIsNavVisible] = useState<boolean>(true);
   const [previousScroll, setPreviousScroll] = useState<number>(0);
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
-  // const navRef = useRef<HTMLDivElement>(null);
-
-  // const closeNav = () => {
-  //   setIsNavOpen(false);
-  // };
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
 
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen);
@@ -139,7 +117,6 @@ const Navbar: React.FC = () => {
 
       <ul className={`nav_links ${isNavOpen ? "nav_links_open" : ""}`}>
         <Link to="/dashboard" className="decoration">
-          {" "}
           <li
             className={`nav_links_li ${
               activePage === "/dashboard" ? "active" : ""
@@ -150,7 +127,6 @@ const Navbar: React.FC = () => {
         </Link>
 
         <Link to="/topics" className="decoration">
-          {" "}
           <li
             className={`nav_links_li ${
               activePage === "/topics" ? "active" : ""
@@ -160,18 +136,7 @@ const Navbar: React.FC = () => {
           </li>
         </Link>
 
-        {/* <Link to="/posts-crypto" className="decoration">
-          <li
-            className={`nav_links_li ${
-              activePage === "/posts-crypto" ? "active" : ""
-            }`}
-          >
-            Posts Crypto
-          </li>
-        </Link> */}
-
         <Link to="/blog" className="decoration">
-          {" "}
           <li
             className={`nav_links_li ${activePage === "/blog" ? "active" : ""}`}
           >
@@ -194,8 +159,8 @@ const Navbar: React.FC = () => {
               <p className="dropdown_list_p">
                 <i className="bx bxs-user icons_dropdown"></i> Profile
               </p>
-              <p className="dropdown_list_p" onClick={showModal}>
-                <i className="bx bx-cog icons_dropdown"></i> Setting
+              <p className="dropdown_list_p">
+                <i className="bx bx-cog icons_dropdown"></i> Settings
               </p>
               <p className="dropdown_list_p" onClick={handleLogout}>
                 <i className="bx bx-log-out icons_dropdown"></i> Logout
@@ -204,17 +169,6 @@ const Navbar: React.FC = () => {
           )}
         </div>
       </ul>
-
-      <Modal
-        title="Settings"
-        open={isModalOpen}
-        onOk={handleOk}
-        onCancel={handleCancel}
-      >
-        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 10}}>
-          Theme <DarkMode />
-        </div>
-      </Modal>
     </nav>
   );
 };

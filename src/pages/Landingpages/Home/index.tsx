@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./home.css";
 import bal from "../../../assets/BAL.png";
 import cdt from "../../../assets/CDT.png";
@@ -18,11 +18,11 @@ import { Link } from "react-router-dom";
 // import map from "../../../assets/map.png";
 
 const Home: React.FC = () => {
-  const [showIframe, setShowIframe] = useState(false);
+  // const [showIframe, setShowIframe] = useState(false);
 
-  const toggleIframe = () => {
-    setShowIframe(!showIframe);
-  };
+  // const toggleIframe = () => {
+  //   setShowIframe(!showIframe);
+  // };
 
   useEffect(() => {
     document.title = " Alvin AI";
@@ -30,7 +30,7 @@ const Home: React.FC = () => {
 
   return (
     <div className="home">
-      <div>
+      {/* <div>
       <div className="chat_boxs" onClick={toggleIframe}>
       <i className='bx bxs-ghost chat_icons' ></i>
       </div>
@@ -42,7 +42,7 @@ const Home: React.FC = () => {
           className="iframe"
         ></iframe>
       )}
-    </div>
+    </div> */}
       <NavLanDing />
       <div className="home_circle">
         <div className="home_title">

@@ -1,9 +1,9 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { RoutesApp } from "./router";
 import "./App.css";
 import DefaultLayout from "./Layout/DefaultLayout";
-// import DarkMode from "./components/DarkMode";
+import DarkMode from "./components/DarkMode";
 
 interface DefaultLayoutProps {
   children: React.ReactNode;
@@ -12,19 +12,11 @@ interface DefaultLayoutProps {
 
 function App(): JSX.Element {
 
-  // // default dark mode
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    if (!savedTheme) {
-      localStorage.setItem("theme", "dark");
-    }
-  }, []);
-
 
   return (
     <Router>
       <div>
-        {/* <DarkMode /> */}
+        <DarkMode />
         <Routes>
           {RoutesApp.map((route, index) => {
             const Page = route.component;

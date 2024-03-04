@@ -1,9 +1,10 @@
-import React, { useEffect, useState, ChangeEvent } from "react";
+import React, { useEffect, useState, ChangeEvent, Fragment } from "react";
 import { Skeleton, Table } from "antd";
 import axios, { AxiosResponse } from "axios";
 import Coin from "../../components/Coin";
 import "./dashboard.css";
 import type { TableProps } from "antd";
+import DarkMode from "../../components/DarkMode";
 
 interface CoinData {
   id: string;
@@ -155,181 +156,199 @@ const DashBoard: React.FC = () => {
   }, []);
 
   return (
-    <div className="dashboard">
-      <div className="dashboard_overview">
-        <h2 className="dashboard_overview_h2">
-          <i className="bx bx-stats title_icons"></i> Markets Overview
-        </h2>
-        <div className="dashboard_overview_trending">
-          <div className="dashboard_overview_box">
-            <p className="dashboard_overview_box_p">🔥Hot Coins</p>
-            {loading ? (
-              <Skeleton
-                avatar={{ size: "large" }}
-                title={false}
-                paragraph={{
-                  rows: 4,
-                  width: ["100%", "80%", "60%", "40%"],
-                }}
-                active
-              />
-            ) : (
-              <>
-                {selectedCoins.map((coin) => (
-                  <div key={coin.id} className="coin_info_box">
-                    <Coin
-                      name={coin.name}
-                      image={coin.image}
-                      symbol={coin.symbol}
-                    />
-                    <p className={coin.price_change_24h < 0 ? "red" : "green"}>
-                      {coin.current_price}
-                    </p>
-                    <p className={coin.price_change_24h < 0 ? "red" : "green"}>
-                      {coin.price_change_24h.toFixed(2)}%
-                    </p>
-                  </div>
-                ))}
-              </>
-            )}
-          </div>
-
-          <div className="dashboard_overview_box">
-            <p className="dashboard_overview_box_p">🚀Top Gainer Coin</p>
-            {loading ? (
-              // <div className="loading_circle">
-              //   <div className="ui-loader loader-blk">
-              //     <svg viewBox="22 22 44 44" className="multiColor-loader">
-              //       <circle
-              //         cx="44"
-              //         cy="44"
-              //         r="20.2"
-              //         fill="none"
-              //         strokeWidth="3.6"
-              //         className="loader-circle loader-circle-animation"
-              //       ></circle>
-              //     </svg>
-              //   </div>
-              // </div>
-              <Skeleton
-                avatar={{ size: "large" }}
-                title={false}
-                paragraph={{
-                  rows: 4,
-                  width: ["100%", "80%", "60%", "40%"],
-                }}
-                active
-              />
-            ) : (
-              <>
-                {latestCoins.map((coin) => (
-                  <div key={coin.id} className="coin_info_box">
-                    <Coin
-                      name={coin.name}
-                      image={coin.image}
-                      symbol={coin.symbol}
-                    />
-                    <p className={coin.price_change_24h < 0 ? "red" : "green"}>
-                      {coin.current_price}
-                    </p>
-                    <p className={coin.price_change_24h < 0 ? "red" : "green"}>
-                      {coin.price_change_24h.toFixed(2)}%
-                    </p>
-                  </div>
-                ))}
-              </>
-            )}
-          </div>
-
-          <div className="dashboard_overview_box">
-            <p className="dashboard_overview_box_p">🔈Top Volume Coin</p>
-            {loading ? (
-              //
-              <Skeleton
-                avatar={{ size: "large" }}
-                title={false}
-                paragraph={{
-                  rows: 4,
-                  width: ["100%", "80%", "60%", "40%"],
-                }}
-                active
-              />
-            ) : (
-              <>
-                {highVolumeCoins.map((coin) => (
-                  <div key={coin.id} className="coin_info_box">
-                    <Coin
-                      name={coin.name}
-                      image={coin.image}
-                      symbol={coin.symbol}
-                    />
-                    <p className={coin.price_change_24h < 0 ? "red" : "green"}>
-                      {coin.current_price}
-                    </p>
-                    <p className={coin.price_change_24h < 0 ? "red" : "green"}>
-                      {coin.price_change_24h.toFixed(2)}%
-                    </p>
-                    {/* <p>{coin.total_volume}</p> */}
-                  </div>
-                ))}
-              </>
-            )}
-          </div>
-        </div>
-      </div>
-
-      <div className="dashboard_table">
-        <div className="dashboard_table_search">
+    <>
+      <DarkMode layout={Fragment} />
+      <div className="dashboard">
+        <div className="dashboard_overview">
           <h2 className="dashboard_overview_h2">
-            <i className="bx bx-stats title_icons"></i> Coins
+            <i className="bx bx-stats title_icons"></i> Markets Overview
           </h2>
-          <div className="inputGroup">
-            <input
-              type="text"
-              required
-              autoComplete="off"
-              onChange={handleChangeTable}
-            />
-            <label htmlFor="name">Search</label>
+          <div className="dashboard_overview_trending">
+            <div className="dashboard_overview_box">
+              <p className="dashboard_overview_box_p">🔥Hot Coins</p>
+              {loading ? (
+                <Skeleton
+                  avatar={{ size: "large" }}
+                  title={false}
+                  paragraph={{
+                    rows: 4,
+                    width: ["100%", "80%", "60%", "40%"],
+                  }}
+                  active
+                />
+              ) : (
+                <>
+                  {selectedCoins.map((coin) => (
+                    <div key={coin.id} className="coin_info_box">
+                      <Coin
+                        name={coin.name}
+                        image={coin.image}
+                        symbol={coin.symbol}
+                      />
+                      <p
+                        className={coin.price_change_24h < 0 ? "red" : "green"}
+                      >
+                        {coin.current_price}
+                      </p>
+                      <p
+                        className={coin.price_change_24h < 0 ? "red" : "green"}
+                      >
+                        {coin.price_change_24h.toFixed(2)}%
+                      </p>
+                    </div>
+                  ))}
+                </>
+              )}
+            </div>
+
+            <div className="dashboard_overview_box">
+              <p className="dashboard_overview_box_p">🚀Top Gainer Coin</p>
+              {loading ? (
+                // <div className="loading_circle">
+                //   <div className="ui-loader loader-blk">
+                //     <svg viewBox="22 22 44 44" className="multiColor-loader">
+                //       <circle
+                //         cx="44"
+                //         cy="44"
+                //         r="20.2"
+                //         fill="none"
+                //         strokeWidth="3.6"
+                //         className="loader-circle loader-circle-animation"
+                //       ></circle>
+                //     </svg>
+                //   </div>
+                // </div>
+                <Skeleton
+                  avatar={{ size: "large" }}
+                  title={false}
+                  paragraph={{
+                    rows: 4,
+                    width: ["100%", "80%", "60%", "40%"],
+                  }}
+                  active
+                />
+              ) : (
+                <>
+                  {latestCoins.map((coin) => (
+                    <div key={coin.id} className="coin_info_box">
+                      <Coin
+                        name={coin.name}
+                        image={coin.image}
+                        symbol={coin.symbol}
+                      />
+                      <p
+                        className={coin.price_change_24h < 0 ? "red" : "green"}
+                      >
+                        {coin.current_price}
+                      </p>
+                      <p
+                        className={coin.price_change_24h < 0 ? "red" : "green"}
+                      >
+                        {coin.price_change_24h.toFixed(2)}%
+                      </p>
+                    </div>
+                  ))}
+                </>
+              )}
+            </div>
+
+            <div className="dashboard_overview_box">
+              <p className="dashboard_overview_box_p">🔈Top Volume Coin</p>
+              {loading ? (
+                //
+                <Skeleton
+                  avatar={{ size: "large" }}
+                  title={false}
+                  paragraph={{
+                    rows: 4,
+                    width: ["100%", "80%", "60%", "40%"],
+                  }}
+                  active
+                />
+              ) : (
+                <>
+                  {highVolumeCoins.map((coin) => (
+                    <div key={coin.id} className="coin_info_box">
+                      <Coin
+                        name={coin.name}
+                        image={coin.image}
+                        symbol={coin.symbol}
+                      />
+                      <p
+                        className={coin.price_change_24h < 0 ? "red" : "green"}
+                      >
+                        {coin.current_price}
+                      </p>
+                      <p
+                        className={coin.price_change_24h < 0 ? "red" : "green"}
+                      >
+                        {coin.price_change_24h.toFixed(2)}%
+                      </p>
+                      {/* <p>{coin.total_volume}</p> */}
+                    </div>
+                  ))}
+                </>
+              )}
+            </div>
           </div>
         </div>
 
-        {loading ? (
-          <>
-            <Skeleton
-              title={false}
-              paragraph={{
-                rows: 10,
-                width: [
-                  "100%",
-                  "90%",
-                  "80%",
-                  "70%",
-                  "60%",
-                  "50%",
-                  "40%",
-                  "30%",
-                  "20%",
-                  "10%",
-                ],
-              }}
-              active
-            />
-          </>
-        ) : (
-          <>
-            <Table
-              columns={columns}
-              dataSource={filteredCoins.length > 0 ? filteredCoins : coins}
-              rowKey={(record) => record.id}
-              scroll={{ x: true }}
-              pagination={{ position: ["bottomCenter"], showSizeChanger: true }}
-              className="centered-pagination-table"
-            />
-          </>
-        )}
+        <div className="dashboard_table">
+          <div className="dashboard_table_search">
+            <h2 className="dashboard_overview_h2">
+              <i className="bx bx-stats title_icons"></i> Coins
+            </h2>
+            <div className="inputGroup">
+              <input
+                type="text"
+                required
+                autoComplete="off"
+                onChange={handleChangeTable}
+              />
+              <label htmlFor="name">Search</label>
+            </div>
+          </div>
+
+          {loading ? (
+            <>
+              <Skeleton
+                title={false}
+                paragraph={{
+                  rows: 10,
+                  width: [
+                    "100%",
+                    "90%",
+                    "80%",
+                    "70%",
+                    "60%",
+                    "50%",
+                    "40%",
+                    "30%",
+                    "20%",
+                    "10%",
+                  ],
+                }}
+                active
+              />
+            </>
+          ) : (
+            <>
+              <Table
+                columns={columns}
+                dataSource={filteredCoins.length > 0 ? filteredCoins : coins}
+                rowKey={(record) => record.id}
+                scroll={{ x: true }}
+                pagination={{
+                  position: ["bottomCenter"],
+                  showSizeChanger: true,
+                }}
+                className="centered-pagination-table"
+              />
+            </>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

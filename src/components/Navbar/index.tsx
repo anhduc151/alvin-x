@@ -4,10 +4,11 @@ import "./navbar.css";
 import logo1 from "../../assets/logo.png";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../../client";
-import { message } from "antd";
 import navdropdown from "../../assets/dropdown.png";
+import { toast } from "sonner";
 
 const Navbar: React.FC = () => {
+  const navigate = useNavigate();
   const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
   const location = useLocation();
   const [activePage, setActivePage] = useState<string>("");
@@ -52,21 +53,32 @@ const Navbar: React.FC = () => {
   }, [location, isNavVisible, previousScroll]);
 
   // handle logout
-  let navigate = useNavigate();
-
   const handleLogout = async () => {
     try {
       const { error } = await supabase.auth.signOut();
       if (!error) {
-        // sessionStorage.removeItem("token");
-        message.success("Logout successfully");
+        localStorage.removeItem("token");
         navigate("/");
+        toast.success("Logout successfully", {
+          style: {
+            backgroundColor: "green",
+            color: "white",
+            border: "none",
+          },
+          position: "top-right",
+        });
       } else {
         console.error("Error when logging out:", error.message);
       }
     } catch (error: any) {
-      message.error("");
-      console.error("Error when logging out:", error.message);
+      toast.error("Error when logging out: " + error.message, {
+        style: {
+          backgroundColor: "red",
+          color: "white",
+          border: "none",
+        },
+        position: "top-right"
+      });
     }
   };
 

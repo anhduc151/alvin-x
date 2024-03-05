@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Form, Input, Button, message } from "antd";
+import { Form, Input, Button } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "../../client";
 import "./forgot.css";
 import logonav from "../../assets/logo.png";
+import { toast } from "sonner";
 
 const ForgotPassword: React.FC = () => {
   const navigate = useNavigate();
@@ -18,11 +19,25 @@ const ForgotPassword: React.FC = () => {
         throw error;
       }
 
-      message.success("Password reset email sent successfully!");
+      toast.success("Password reset email sent successfully!", {
+        style: {
+          backgroundColor: "#16a9de",
+          color: "white",
+          border: "none",
+        },
+        position: "top-right",
+      });
       // Chuyển hướng đến trang đổi mật khẩu
       navigate("/changepass");
     } catch (error) {
-      message.error("Error: " + (error as Error).message);
+      toast.error("Error: " + (error as Error).message, {
+        style: {
+          backgroundColor: "red",
+          color: "white",
+          border: "none",
+        },
+        position: "top-right",
+      });
     } finally {
       setLoading(false);
     }

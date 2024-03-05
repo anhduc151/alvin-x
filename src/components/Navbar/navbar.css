@@ -190,6 +190,7 @@
   display: flex;
   gap: 10px;
   flex-direction: column;
+  align-items: flex-start;
   box-shadow: 4px 4px 4px 1px rgba(182, 181, 181, 0.2);
 }
 
@@ -209,6 +210,7 @@
 .dropdown_list_p:nth-child(3) {
   border-top: 3px solid #8a8383;
   padding-top: 5px;
+  width: 100%;
 }
 
 .icons_user {

@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
-import { Form, Input, Button, message } from "antd";
+import { Form, Input, Button } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "../../client";
 import logonav from "../../assets/logo.png";
+import { toast } from "sonner";
 
 const SignUp: React.FC = () => {
   const navigate = useNavigate();
@@ -25,10 +26,24 @@ const SignUp: React.FC = () => {
 
       if (error) throw error;
       console.log(data);
-      message.success("Check your email for verification link");
-      navigate("/sign-in"); // Chuyển hướng sau khi đăng ký thành công
+      toast.info("Check your email for verification link", {
+        style: {
+          backgroundColor: "#16a9de",
+          color: "white",
+          border: "none",
+        },
+        position: "top-right",
+      });
+      navigate("/sign-in");
     } catch (error) {
-      message.error((error as Error).message);
+      toast.error((error as Error).message, {
+        style: {
+          backgroundColor: "red",
+          color: "white",
+          border: "none",
+        },
+        position: "top-right",
+      });
     }
   };
 

@@ -1,5 +1,10 @@
 import React, { Fragment } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import { RoutesApp } from "./router";
 import "./App.css";
 import DefaultLayout from "./Layout/DefaultLayout";
@@ -10,14 +15,11 @@ interface DefaultLayoutProps {
   children: React.ReactNode;
 }
 
-
 function App(): JSX.Element {
-
-
   return (
     <Router>
       <div>
-        <Toaster />
+        <Toaster position="top-right"/>
         <DarkMode />
         <Routes>
           {RoutesApp.map((route, index) => {

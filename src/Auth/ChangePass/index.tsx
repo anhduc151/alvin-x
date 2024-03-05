@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Form, Input, Button, message } from "antd";
+import { Form, Input, Button } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "../../client";
 import logonav from "../../assets/logo.png";
-
+import { toast } from "sonner";
 
 const ChangePass: React.FC = () => {
   const navigate = useNavigate();
@@ -24,11 +24,25 @@ const ChangePass: React.FC = () => {
         throw error;
       }
 
-      message.success("Password updated successfully!");
+      toast.success("Password updated successfully!", {
+        style: {
+          backgroundColor: "#16a9de",
+          color: "white",
+          border: "none",
+        },
+        position: "top-right",
+      });
       navigate("/sign-in");
     } catch (error) {
       // message.error("Error: " + error.message);
-      message.error("Please confirm your email and return change password!");
+      toast.error("Please confirm your email and return change password!", {
+        style: {
+          backgroundColor: "red",
+          color: "white",
+          border: "none",
+        },
+        position: "top-right",
+      });
     }
   };
 
@@ -73,9 +87,9 @@ const ChangePass: React.FC = () => {
           </Form.Item>
           <Form.Item>
             <div className="sign_in_form_btn">
-            <Button type="primary" htmlType="submit" className="sign_in_btn">
-              Update Password
-            </Button>
+              <Button type="primary" htmlType="submit" className="sign_in_btn">
+                Update Password
+              </Button>
             </div>
           </Form.Item>
         </Form>

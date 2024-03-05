@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { Form, Input, Button, message } from "antd";
+import { Form, Input, Button } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "../../client";
 import logonav from "../../assets/logo.png";
 // import google from "../../assets/google.png";
 import "./sign-in.css";
+import { toast } from "sonner";
 
-interface SignInProps {
-  setToken: (token: string) => void;
-}
+// interface SignInProps {
+//   setToken: (token: string) => void;
+// }
 
-const  SignIn: React.FC<SignInProps> = () => {
+const SignIn: React.FC = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
@@ -21,44 +22,65 @@ const  SignIn: React.FC<SignInProps> = () => {
         email: values.email,
         password: values.password,
       });
+      console.log("🚀 ~ onFinish ~ data:", data);
 
       if (error) throw error;
-      console.log(data);
-      navigate("/dashboard");
-      message.success("Login successful!");
+
+      const token = data?.session?.access_token; // Lấy access token từ session
+      if (token) {
+        console.log("🚀 ~ onFinish ~ token:", token);
+        localStorage.setItem("token", token);
+        navigate("/dashboard");
+        toast.success("Login successful!", {
+          style: {
+            top: 40,
+            backgroundColor: "green",
+            color: "white",
+            border: "none",
+          },
+          position: "top-right",
+        });
+      } else {
+        toast.error("Error: Unable to get access token", {
+          style: {
+            backgroundColor: "red",
+            color: "white",
+            border: "none",
+          },
+          position: "top-right",
+        });
+      }
     } catch (error) {
-      message.error("Error: " + (error as Error).message);
+      toast.error("Error: " + (error as Error).message, {
+        style: {
+          backgroundColor: "red",
+          color: "white",
+          border: "none",
+          transition: "0.5s"
+        },
+        position: "top-right"
+      });
     } finally {
       setLoading(false);
     }
   };
 
-  // const signInWithGoogle = async () => {
-  //   try {
-  //     setLoading(true);
-  //     const { user, error } = await supabase.auth.signInWithOAuth({
-  //       provider: "google",
-  //     });
-
-  //     console.log("Google Auth User:", user);
-  //     console.log("Google Auth Error:", error);
-
-  //     if (error) {
-  //       throw error;
-  //     }
-  //     navigate("/dashboard");
-
-  //     console.log(user);
-  //     message.success("Login with Google successful!");
-  //   } catch (error) {
-  //     message.error("Error: " + (error as Error).message);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
   useEffect(() => {
-    document.title = "Sign in - Alvin AI";
+    const checkSession = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        if (token) {
+          const response = await supabase.auth.getSession();
+          if ("data" in response && response.data.session) {
+            navigate("/dashboard");
+          }
+        }
+      } catch (error) {
+        console.error("Error checking session:", error);
+      }
+    };
+
+    checkSession();
   }, []);
 
   return (

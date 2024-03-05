@@ -8,7 +8,7 @@ const NotFound: React.FC = () => {
   const navigate = useNavigate();
 
   const handleGoBack = () => {
-    navigate("/topics");
+    navigate("/");
   };
 
   useEffect(() => {

@@ -4,6 +4,7 @@ import { Form, Input, Button, message } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 // import { supabase } from "../../client";
 import logonav from "../../assets/logo.png";
+import { toast } from "sonner";
 
 const LoginAdmin: React.FC = () => {
   const navigate = useNavigate();
@@ -37,7 +38,7 @@ const LoginAdmin: React.FC = () => {
       if (values.email === "admin@gmail.com" && values.password === "111111") {
         // If match, sign in
         navigate("/admin/dashboard");
-        message.success("Login successful!");
+        toast.success("Login successful!");
       } else {
         // If not match, show error message
         throw new Error("Invalid email or password");
